@@ -46,4 +46,18 @@ describe('pie routes', () => {
 
     expect(res.body).toEqual([cherry, pumpkin, keyLime]);
   });
+
+  it('gets a pie by id via GET', async () => {
+    const pie = await Pie.insert({
+      type: 'Key Lime',
+      wholePie: false,
+      slice: true,
+      sliceQuantity: 4
+    });
+
+    const res = await request(app)
+      .get(`/api/v1/pies/${pie.id}`);
+
+    expect(res.body).toEqual(pie);
+  });
 });

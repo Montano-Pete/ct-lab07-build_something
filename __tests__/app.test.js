@@ -80,4 +80,20 @@ describe('pie routes', () => {
       ...pie
     });
   });
+
+  it('deletes a pie by id via DELETE', async () => {
+    const pie = await Pie.insert({
+      type: 'Key Lime',
+      wholePie: false,
+      slice: true,
+      sliceQuantity: 4
+    });
+    
+    const res = await request(app)
+      .delete(`/api/v1/pies/${pie.id}`);
+
+    expect(res.body).toEqual({
+      message: `You deleted a ${pie.type} pie.`
+    });
+  });
 });

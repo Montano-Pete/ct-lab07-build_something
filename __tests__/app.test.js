@@ -76,8 +76,8 @@ describe('pie routes', () => {
       });
 
     expect(res.body).toEqual({
-      ...pie,
-      sliceQuantity: 4
+      sliceQuantity: 4,
+      ...pie
     });
   });
 });

@@ -5,5 +5,6 @@ CREATE TABLE pies (
   type TEXT NOT NULL,
   whole_pie BOOL NOT NULL,
   slice BOOL NOT NULL,
-  slice_quantity INTEGER NOT NULL
+  slice_quantity INTEGER NOT NULL,
+  gif TEXT NOT NULL
 );

@@ -18,6 +18,7 @@ describe('pie routes', () => {
 
     expect(res.body).toEqual({
       id: '1',
+      gif: expect.any(String),
       ...pie
     });
   });
@@ -27,19 +28,22 @@ describe('pie routes', () => {
       type: 'Cherry',
       wholePie: true,
       slice: false,
-      sliceQuantity: 0
+      sliceQuantity: 0,
+      gif: 'N/A'
     });
     const pumpkin = await Pie.insert({
       type: 'Pumpkin',
       wholePie: false,
       slice: true,
-      sliceQuantity: 1
+      sliceQuantity: 1,
+      gif: 'N/A'
     });
     const keyLime = await Pie.insert({
       type: 'Key Lime',
       wholePie: false,
       slice: true,
-      sliceQuantity: 4
+      sliceQuantity: 4,
+      gif: 'N/A'
     });
 
     const res = await request(app).get('/api/v1/pies/');
@@ -52,7 +56,8 @@ describe('pie routes', () => {
       type: 'Key Lime',
       wholePie: false,
       slice: true,
-      sliceQuantity: 4
+      sliceQuantity: 4,
+      gif: 'N/A'
     });
 
     const res = await request(app)
@@ -66,7 +71,8 @@ describe('pie routes', () => {
       type: 'Key Lime',
       wholePie: false,
       slice: true,
-      sliceQuantity: 6 // incorrect amount of slices
+      sliceQuantity: 6, // incorrect amount of slices
+      gif: 'N/A'
     });
 
     const res = await request(app)
@@ -86,7 +92,8 @@ describe('pie routes', () => {
       type: 'Key Lime',
       wholePie: false,
       slice: true,
-      sliceQuantity: 4
+      sliceQuantity: 4,
+      gif: 'N/A'
     });
     
     const res = await request(app)

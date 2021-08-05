@@ -60,4 +60,24 @@ describe('pie routes', () => {
 
     expect(res.body).toEqual(pie);
   });
+
+  it('updates a pie by id via PUT', async () => {
+    const pie = await Pie.insert({
+      type: 'Key Lime',
+      wholePie: false,
+      slice: true,
+      sliceQuantity: 6 // incorrect amount of slices
+    });
+
+    const res = await request(app)
+      .put(`/api/v1/pies/${pie.id}`)
+      .send({
+        sliceQuantity: 4 // correct amount of slices
+      });
+
+    expect(res.body).toEqual({
+      ...pie,
+      sliceQuantity: 4
+    });
+  });
 });
